@@ -2,89 +2,82 @@ import React from 'react'
 
 import NavbarBrand from './NavbarBrand'
 import NavbarCollapse from './NavbarCollapse'
+import NavbarToggler from './NavbarToggler'
+
+import NavbarNav from './NavbarNav'
+import NavbarNavItem from './NavbarNavItem'
+import NavbarNavLink from './NavbarNavLink'
+
+import DropdownMenu from './DropdownMenu'
+import DropdownMenuItem from './DropdownMenuItem'
 
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <NavbarBrand />
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon" />
-      </button>
 
-      <NavbarCollapse>
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item active">
-            <a
-              className="nav-link"
-              href="/"
-            >
-              Home
-              <span className="sr-only">(current)</span>
-            </a>
-          </li>
-          <li className="nav-item">
-            <a
-              className="nav-link"
-              href="/"
-            >
-              Link
-            </a>
-          </li>
-          <li className="nav-item dropdown">
-            <a
-              className="nav-link dropdown-toggle"
-              href="/"
+      <NavbarToggler
+        dataTarget="navbar"
+        ariaControls="#navbar"
+        ariaLabel="navbar"
+      />
+
+      <NavbarCollapse id="navbar">
+        <NavbarNav>
+          <NavbarNavItem active>
+            <NavbarNavLink
+              to="/home"
+              text="Home"
+              label="go to home page (current)"
+            />
+          </NavbarNavItem>
+          <NavbarNavItem>
+            <NavbarNavLink
+              to="/link"
+              text="Link"
+              label="go to link page"
+            />
+          </NavbarNavItem>
+          <NavbarNavItem dropdown>
+            <NavbarNavLink
               id="navbarDropdown"
               role="button"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-            >
-              Dropdown
-            </a>
-            <div
-              className="dropdown-menu"
-              aria-labelledby="navbarDropdown"
-            >
-              <a
-                className="dropdown-item"
-                href="/"
-              >
-                Action
-              </a>
-              <a
-                className="dropdown-item"
-                href="/"
-              >
-                Another action
-              </a>
+              text="Dropdown"
+              dropdownToggle
+            />
+            <DropdownMenu ariaLabelledBy="dropdownmenu">
+              <DropdownMenuItem
+                to="/action"
+                text="action"
+              />
+
+              <DropdownMenuItem
+                to="/another-action"
+                text="Another action"
+              />
+
               <div className="dropdown-divider"/>
-              <a
-                className="dropdown-item"
-                href="/"
-              >
-                Something else here
-              </a>
-            </div>
-          </li>
-          <li className="nav-item">
-            <a
+
+              <DropdownMenuItem
+                to="/something-else-here"
+                text="Something else here"
+              />
+            </DropdownMenu>
+          </NavbarNavItem>
+          <NavbarNavItem>
+            <NavbarNavLink
               className="nav-link disabled"
-              href="/"
-              tabindex="-1" aria-disabled="true"
-            >
-              Disabled
-            </a>
-          </li>
-        </ul>
+              to="/disabled"
+              tabIndex="-1"
+              aria-disabled="true"
+              text="Disabled"
+            />
+          </NavbarNavItem>
+        </NavbarNav>
+
         <form
           className="form-inline my-2 my-lg-0"
         >
