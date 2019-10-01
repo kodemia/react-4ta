@@ -7,6 +7,7 @@ function NavbarNavLink(props) {
     text,
     label,
     disabled,
+    onClick,
     ...cleanProps
   } = props
 
@@ -22,6 +23,7 @@ function NavbarNavLink(props) {
       className={className}
       href={to}
       {...cleanProps}
+      onClick={onClick}
     >
       { text }
       <span className="sr-only">
