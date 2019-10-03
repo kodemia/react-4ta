@@ -7,9 +7,9 @@ function PostCardList (props) {
 
   return (
     <section>
-      { 
+      {
         posts.map(post => (
-          <PostCard 
+          <PostCard
             title={post.title}
             description={post.description}
             date={post.date}
@@ -17,7 +17,7 @@ function PostCardList (props) {
             key={post.title}
           />
         ))
-      }    
+      }
     </section>
   )
 }
