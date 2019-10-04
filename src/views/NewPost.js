@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 
+import Navbar from '../components/Navbar'
+import NewPostForm from '../components/NewPost'
+
 class NewPost extends Component {
   render() {
     return (
       <div className='new-post'>
-        <h2>
-          Este es un nuevo post
-        </h2>
+        <Navbar />
+        <section className="container">
+          <NewPostForm />
+        </section>
       </div>
     )
   }

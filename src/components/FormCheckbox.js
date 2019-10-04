@@ -26,7 +26,7 @@ class FormCheckbox extends Component {
         { this.state.isActive && (
           <label
             className="form-check-label text-light"
-            for={this.props.id}
+            htmlFor={this.props.id}
           >
             { this.props.label }
           </label>

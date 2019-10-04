@@ -17,14 +17,31 @@ class FormInput extends Component {
 
   render() {
     return (
-      <input
-        className="form-control mr-sm-2"
-        type={this.props.type}
-        placeholder={this.props.placeholder}
-        aria-label={this.props.ariaLabel}
-        value={this.state.text}
-        onChange={this.onChangeValue.bind(this)}
-      />
+      <div className="form-group">
+        <label htmlFor={this.props.id}>
+          { this.props.label }
+        </label>
+        <input
+          className="form-control"
+          id={this.props.id}
+          type={this.props.type}
+          placeholder={this.props.placeholder}
+          aria-label={this.props.ariaLabel}
+          aria-describedby={this.props.ariaDescribedBy}
+          value={this.state.text}
+          onChange={this.onChangeValue.bind(this)}
+        />
+        {
+          this.props.help && (
+            <small
+              id={this.props.id}
+              className="form-text text-muted"
+            >
+              { this.props.help }
+            </small>
+          )
+        }
+      </div>
     )
   }
 }
