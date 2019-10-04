@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { Link } from 'react-router-dom'
+
 function NavbarNavLink(props) {
   const {
     to,
@@ -19,17 +21,17 @@ function NavbarNavLink(props) {
   const className = styles.join(' ')
 
   return (
-    <a
+    <Link
       className={className}
-      href={to}
-      {...cleanProps}
+      to={to}
       onClick={onClick}
+      {...cleanProps}
     >
       { text }
       <span className="sr-only">
         { label }
       </span>
-    </a>
+    </Link>
   )
 }
 
