@@ -1,14 +1,22 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function PostCard (props) {
-  const { title, description, date, image } = props
+  const {
+    title,
+    description,
+    date,
+    image,
+    id
+  } = props
+
   return (
-    <div 
+    <div
       className='card mb-3'
     >
       <div className='row no-gutters'>
         <div className='col-md-4'>
-          <img 
+          <img
             src={ image }
             className='card-img'
             alt={ title }
@@ -22,10 +30,17 @@ function PostCard (props) {
             <p className='card-text'>
               { description }
             </p>
+
             <p className='card-text'>
               <small className='text-muted'>
                 { date }
               </small>
+            </p>
+
+            <p className="card-text">
+              <Link to={`/post/${id}`}>
+                ver detalle
+              </Link>
             </p>
           </div>
         </div>

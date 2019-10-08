@@ -24,5 +24,16 @@ export default {
     if (!response.ok) throw new Error('Ocurrió un error al obtener los posts')
 
     return jsonBody.data
+  },
+
+  async getById(id) {
+    const response = await fetch(`http://localhost:8080/posts/${id}`)
+    const jsonBody = await response.json()
+
+    const { post } = jsonBody.data
+
+    if (!response.ok) throw new Error('Ocurrió un error al obtener los posts')
+
+    return post
   }
 }

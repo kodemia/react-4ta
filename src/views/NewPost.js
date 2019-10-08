@@ -7,10 +7,9 @@ import api from '../lib/api'
 
 class NewPost extends Component {
   async savePost(post) {
-    const savedPost = await api.createPost(post)
+    await api.createPost(post)
 
-    // eslint-disable-next-line
-    console.log(savedPost);
+    this.props.history.push('/')
   }
 
   render() {
@@ -19,7 +18,7 @@ class NewPost extends Component {
         <Navbar />
         <section className="container">
           <NewPostForm
-            onSubmit={this.savePost}
+            onSubmit={this.savePost.bind(this)}
           />
         </section>
       </div>

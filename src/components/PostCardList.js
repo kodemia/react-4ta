@@ -10,6 +10,7 @@ function PostCardList (props) {
       {
         posts.map(post => (
           <PostCard
+            id={post._id}
             title={post.title}
             description={post.description}
             date={post.date}

@@ -7,17 +7,27 @@ import {
 
 import Index from './views/Index'
 import NewPost from './views/NewPost'
+import PostDetail from './views/PostDetail'
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path='/' exact>
-          <Index />
-        </Route>
-        <Route path='/new-post' exact>
-          <NewPost />
-        </Route>
+        <Route
+          path='/'
+          component={Index}
+          exact
+        />
+        <Route
+          path='/new-post'
+          component={NewPost}
+          exact
+        />
+        <Route
+          path='/post/:id'
+          component={PostDetail}
+          exact
+        />
       </Switch>
     </Router>
   )
