@@ -1,52 +1,53 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Navbar from '../components/Navbar'
 import PostCard from '../components/PostCard'
 
 import api from '../lib/api'
 
-class PostDetail extends Component {
-  constructor(props) {
-    super(props)
+function PostDetail(props) {
+  const [state, setState] = useState({
+    id: '',
+    title: '',
+    description: '',
+    date: '',
+    image: '',
+    key: '',
+  })
 
-    this.state = {
-      id: '',
-      title: '',
-      description: '',
-      date: '',
-      image: '',
-      key: '',
+  useEffect(() => {
+    const getPost = async () => {
+      const { id } = props.match.params
+
+      const post = await api.getById(id)
+
+      if (state.id !== post._id) {
+        setState({
+          ...post,
+          id: post._id
+        })
+      }
     }
-  }
 
-  async componentDidMount() {
-    const { id } = this.props.match.params
+    getPost()
+  }, [props, state])
 
-    const post = await api.getById(id)
+  return (
+    <div className='post-detail'>
+      <Navbar />
 
-    this.setState({
-      ...post,
-      id: post._id
-    })
-  }
-
-  render() {
-    return (
-      <div className='post-detail'>
-        <Navbar />
-        <section className="container">
-          <PostCard
-            id={this.state.id}
-            title={this.state.title}
-            description={this.state.description}
-            date={this.state.date}
-            image={this.state.image}
-            key={this.state.title}
-          />
-        </section>
-      </div>
-    )
-  }
+      <section className="container">
+        <PostCard
+          id={state.id}
+          title={state.title}
+          description={state.description}
+          date={state.date}
+          image={state.image}
+          key={state.title}
+        />
+      </section>
+    </div>
+  )
 }
 
 export default PostDetail

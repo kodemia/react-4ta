@@ -15,7 +15,7 @@ function PostCardList (props) {
             description={post.description}
             date={post.date}
             image={post.image}
-            key={post.title}
+            key={post._id}
           />
         ))
       }

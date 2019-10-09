@@ -1,53 +1,42 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 
-class FormInput extends Component {
-  constructor(props) {
-    super(props)
+function FormInput(props) {
+  const [state, setState] = useState('')
 
-    this.state = {
-      text: ''
-    }
+  const onChange = (event) => {
+    setState(event.target.value)
+    if (props.onChange) props.onChange(event)
   }
 
-  onChangeValue(event) {
-    const text = event.target.value
+  return (
+    <div className="form-group">
+      <label htmlFor={props.id}>
+        { props.label }
+      </label>
 
-    this.setState({ text })
-
-    if (this.props.onChange) this.props.onChange(event)
-  }
-
-  render() {
-    return (
-      <div className="form-group">
-        <label htmlFor={this.props.id}>
-          { this.props.label }
-        </label>
-
-        <input
-          className="form-control"
-          id={this.props.id}
-          name={this.props.name}
-          type={this.props.type}
-          placeholder={this.props.placeholder}
-          aria-label={this.props.ariaLabel}
-          aria-describedby={this.props.ariaDescribedBy}
-          value={this.state.text}
-          onChange={this.onChangeValue.bind(this)}
-        />
-        {
-          this.props.help && (
-            <small
-              id={this.props.id}
-              className="form-text text-muted"
-            >
-              { this.props.help }
-            </small>
-          )
-        }
-      </div>
-    )
-  }
+      <input
+        className="form-control"
+        id={props.id}
+        name={props.name}
+        type={props.type}
+        placeholder={props.placeholder}
+        aria-label={props.ariaLabel}
+        aria-describedby={props.ariaDescribedBy}
+        value={state}
+        onChange={onChange}
+      />
+      {
+        props.help && (
+          <small
+            id={props.id}
+            className="form-text text-muted"
+          >
+            { props.help }
+          </small>
+        )
+      }
+    </div>
+  )
 }
 
 export default FormInput

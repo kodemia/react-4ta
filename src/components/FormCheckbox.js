@@ -1,39 +1,31 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 
-class FormCheckbox extends Component {
-  constructor(props) {
-    super(props)
+function FormCheckbox(props) {
+  const [state, setState] = useState(false)
 
-    this.state = {
-      isActive: false
-    }
+  const toggleActive = () => {
+    setState(!state)
   }
 
-  toggleActive() {
-    this.setState({ isActive: !this.state.isActive })
-  }
-
-  render() {
-    return (
-      <div className="form-check">
-        <input
-          className="form-check-input"
-          type="checkbox"
-          checked={this.state.isActive}
-          id={this.props.id}
-          onChange={this.toggleActive.bind(this)}
-        />
-        { this.state.isActive && (
-          <label
-            className="form-check-label text-light"
-            htmlFor={this.props.id}
-          >
-            { this.props.label }
-          </label>
-        )}
-      </div>
-    )
-  }
+  return (
+    <div className="form-check">
+      <input
+        className="form-check-input"
+        type="checkbox"
+        checked={state}
+        id={props.id}
+        onChange={toggleActive}
+      />
+      { state.isActive && (
+        <label
+          className="form-check-label text-light"
+          htmlFor={props.id}
+        >
+          { props.label }
+        </label>
+      )}
+    </div>
+  )
 }
 
 export default FormCheckbox
