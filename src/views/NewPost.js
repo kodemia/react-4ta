@@ -1,4 +1,5 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom'
 
 import Navbar from '../components/Navbar'
 import NewPostForm from '../components/NewPost'
@@ -10,6 +11,16 @@ function NewPost(props) {
     await api.createPost(post)
 
     props.history.push('/')
+  }
+
+  const token = sessionStorage.getItem('token')
+
+  if (!token) {
+    return (
+      <Redirect
+        to="/sign-in"
+      />
+    )
   }
 
   return (
