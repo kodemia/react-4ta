@@ -9,7 +9,6 @@ function NewPost(props) {
     date: new Date(),
     readTime: '',
     description: '',
-    author: '',
     image: ''
   })
 
@@ -55,15 +54,6 @@ function NewPost(props) {
         placeholder="Este es un post bien perron"
         aria-label="post description"
         label="Descripción"
-        onChange={onChange}
-      />
-
-      <FormInput
-        id="author"
-        name="author"
-        placeholder="Fulanito de Tal"
-        aria-label="author name"
-        label="Autor"
         onChange={onChange}
       />
 

@@ -8,6 +8,7 @@ import {
 import Index from './views/Index'
 import NewPost from './views/NewPost'
 import PostDetail from './views/PostDetail'
+import Login from './views/Login'
 
 function App() {
   return (
@@ -26,6 +27,11 @@ function App() {
         <Route
           path='/post/:id'
           component={PostDetail}
+          exact
+        />
+        <Route
+          path='/login'
+          component={Login}
           exact
         />
       </Switch>

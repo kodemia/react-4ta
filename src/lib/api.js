@@ -35,5 +35,39 @@ export default {
     if (!response.ok) throw new Error('Ocurrió un error al obtener los posts')
 
     return post
+  },
+
+  async login(email, password) {
+    const response = await fetch('http://localhost:8080/users/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email,
+        password
+      })
+    })
+
+    if (!response.ok) throw new Error('Ocurrió un error al obtener los posts')
+
+    const jsonBody = await response.json()
+
+    return jsonBody.data
+  },
+
+  async validateSession() {
+    // users/validate/session
+    const response = await fetch('http://localhost:8080/users/validate/session', {
+      headers: {
+        authorization: sessionStorage.getItem('token')
+      }
+    })
+
+    if (!response.ok) throw new Error('Ocurrió un error al obtener los posts')
+
+    const jsonBody = await response.json()
+
+    return jsonBody.data
   }
 }
